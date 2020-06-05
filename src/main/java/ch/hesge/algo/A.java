@@ -14,7 +14,15 @@ public class A {
      * @return La Company qui comporte le plus grand nombre d'employés
      */
     public Company findCompanyWithHighestNumberOfEmployees(Set<Company> companies) {
-        Company company = null;
+        int maxNumberOfEmployees = 0;
+        Company company = companies.iterator().next();
+        for (Company current : companies) {
+            int numberOfEmployees = current.getEmployees().size();
+            if (numberOfEmployees > maxNumberOfEmployees) {
+                company = current;
+                maxNumberOfEmployees = numberOfEmployees;
+            }
+        }
         return company;
     }
 }

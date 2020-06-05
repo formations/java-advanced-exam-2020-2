@@ -2,6 +2,7 @@ package ch.hesge.algo;
 
 import ch.hesge.algo.model.Company;
 
+import java.util.Comparator;
 import java.util.Set;
 
 public class I {
@@ -14,7 +15,8 @@ public class I {
      * @return La Company qui comporte le plus grand nombre d'employés
      */
     public Company findCompanyWithHighestNumberOfEmployees(Set<Company> companies) {
-        Company company = null;
-        return company;
+        return companies.stream()
+                .max(Comparator.comparing(company -> company.getEmployees().size()))
+                .get();
     }
 }

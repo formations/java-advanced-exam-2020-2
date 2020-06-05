@@ -1,8 +1,10 @@
 package ch.hesge.algo;
 
 import ch.hesge.algo.model.Company;
+import ch.hesge.algo.model.Department;
+import ch.hesge.algo.model.Employee;
 
-import java.util.Set;
+import java.util.*;
 
 public class E {
 
@@ -25,8 +27,25 @@ public class E {
      * @param companies Company
      * @return Company fusionnée
      */
-    public Company merge(Set<Company> companies) {
-        Company company = null;
+    public Company merge(List<Company> companies) {
+        StringBuilder builder = new StringBuilder();
+        Map<Employee, Department> employees = new HashMap<>();
+        for (Company company : companies) {
+            builder.append(company.getName());
+            builder.append(" & ");
+            for (Employee employee : company.getEmployees()) {
+                employees.put(employee, employee.getDepartment());
+                company.fire(employee);
+            }
+        }
+        String compoundName = builder.toString();
+        if (compoundName.endsWith(" & ")) {
+            compoundName.substring(0, compoundName.length() - 3);
+        }
+        Company company = new Company(compoundName);
+        for (Map.Entry<Employee, Department> entry : employees.entrySet()) {
+            company.hire(entry.getKey(), entry.getValue());
+        }
         return company;
     }
 }

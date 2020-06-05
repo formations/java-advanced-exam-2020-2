@@ -23,6 +23,7 @@ public class L {
      * @return String concaténée
      */
     public String merge(List<String> strings) {
-        return null;
+        return strings.stream()
+                .collect(Collectors.joining(" & "));
     }
 }

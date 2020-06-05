@@ -1,6 +1,9 @@
 package ch.hesge.algo;
 
+import ch.hesge.algo.model.Coin;
+
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class N {
 
@@ -12,7 +15,11 @@ public class N {
      * @return Stream infini de 0 et de 1
      */
     public IntStream randomStream() {
-        IntStream stream = null;
-        return stream;
+        Coin coin = new Coin();
+        return Stream.generate(coin::flip)
+                .mapToInt(flip -> {
+                    if (flip == Coin.Flip.HEAD) return 0;
+                    return 1;
+                });
     }
 }

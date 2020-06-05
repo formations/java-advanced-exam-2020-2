@@ -4,9 +4,7 @@ import ch.hesge.algo.model.Company;
 import ch.hesge.algo.model.Department;
 import ch.hesge.algo.model.Employee;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class D {
 
@@ -19,6 +17,17 @@ public class D {
      */
     public Map<Department, Set<Employee>> groupByDepartment(Set<Company> companies) {
         Map<Department, Set<Employee>> employeesByDepartment = new HashMap<>();
+        for (Company company : companies) {
+            for (Employee employee : company.getEmployees()) {
+                Department department = employee.getDepartment();
+                Set<Employee> employees = employeesByDepartment.get(department);
+                if (employees == null) {
+                    employees = new HashSet<>();
+                }
+                employees.add(employee);
+                employeesByDepartment.put(department, employees);
+            }
+        }
         return employeesByDepartment;
     }
 }

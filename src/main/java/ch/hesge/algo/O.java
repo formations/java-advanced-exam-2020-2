@@ -1,5 +1,7 @@
 package ch.hesge.algo;
 
+import java.util.stream.DoubleStream;
+
 public class O {
 
     /**
@@ -12,6 +14,9 @@ public class O {
      * @return Valeur approchée de 2
      */
     public double sum() {
-        return 0.0;
+        return DoubleStream.iterate(1.0, i -> i * 2)
+                .map(i -> 1 / i)
+                .limit(100)
+                .sum();
     }
 }
