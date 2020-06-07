@@ -9,7 +9,8 @@ public class E {
     /**
      * Sans utiliser l'API streams mais uniquement l'API de Collection,
      * retourner une Company fusionnée dont le nom est la concaténation du nom de toutes les Company séparés par " & "
-     * et dont les Employee consistent en l'union des Employee de toutes les Company employés dans le même département.
+     * et dont les Employee consistent en l'union des Employee de toutes les Company.
+     * Chaque employé doit garder le même firstName, lastName, birthdate et department ! Seul la company change !
      *
      * Par exemple :
      *
