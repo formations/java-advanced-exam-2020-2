@@ -17,8 +17,8 @@ public class D {
      * @param companies Set de Company
      * @return Map des Employee par Department
      */
-    public Map<Department, Employee> groupByDepartment(Set<Company> companies) {
-        Map<Department, Employee> employeesByDepartment = new HashMap<>();
+    public Map<Department, Set<Employee>> groupByDepartment(Set<Company> companies) {
+        Map<Department, Set<Employee>> employeesByDepartment = new HashMap<>();
         return employeesByDepartment;
     }
 }
